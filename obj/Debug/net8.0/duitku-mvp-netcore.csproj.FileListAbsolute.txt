@@ -1,0 +1,15 @@
+/Users/kevin/Documents/GitHub/duitku-mvp-netcore/bin/Debug/net8.0/duitku-mvp-netcore
+/Users/kevin/Documents/GitHub/duitku-mvp-netcore/bin/Debug/net8.0/duitku-mvp-netcore.deps.json
+/Users/kevin/Documents/GitHub/duitku-mvp-netcore/bin/Debug/net8.0/duitku-mvp-netcore.runtimeconfig.json
+/Users/kevin/Documents/GitHub/duitku-mvp-netcore/bin/Debug/net8.0/duitku-mvp-netcore.dll
+/Users/kevin/Documents/GitHub/duitku-mvp-netcore/bin/Debug/net8.0/duitku-mvp-netcore.pdb
+/Users/kevin/Documents/GitHub/duitku-mvp-netcore/obj/Debug/net8.0/duitku-mvp-netcore.GeneratedMSBuildEditorConfig.editorconfig
+/Users/kevin/Documents/GitHub/duitku-mvp-netcore/obj/Debug/net8.0/duitku-mvp-netcore.AssemblyInfoInputs.cache
+/Users/kevin/Documents/GitHub/duitku-mvp-netcore/obj/Debug/net8.0/duitku-mvp-netcore.AssemblyInfo.cs
+/Users/kevin/Documents/GitHub/duitku-mvp-netcore/obj/Debug/net8.0/duitku-mvp-netcore.csproj.CoreCompileInputs.cache
+/Users/kevin/Documents/GitHub/duitku-mvp-netcore/obj/Debug/net8.0/duitku-mvp-netcore.sourcelink.json
+/Users/kevin/Documents/GitHub/duitku-mvp-netcore/obj/Debug/net8.0/duitku-mvp-netcore.dll
+/Users/kevin/Documents/GitHub/duitku-mvp-netcore/obj/Debug/net8.0/refint/duitku-mvp-netcore.dll
+/Users/kevin/Documents/GitHub/duitku-mvp-netcore/obj/Debug/net8.0/duitku-mvp-netcore.pdb
+/Users/kevin/Documents/GitHub/duitku-mvp-netcore/obj/Debug/net8.0/duitku-mvp-netcore.genruntimeconfig.cache
+/Users/kevin/Documents/GitHub/duitku-mvp-netcore/obj/Debug/net8.0/ref/duitku-mvp-netcore.dll
