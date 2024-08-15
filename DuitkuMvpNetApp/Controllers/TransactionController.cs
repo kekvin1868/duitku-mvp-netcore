@@ -353,39 +353,56 @@ namespace DuitkuMvpNetApp.Controllers
 
         [HttpPost("ReceivePost")]
         [Consumes("application/x-www-form-urlencoded")]
-        public IActionResult ReceivePost([FromForm] CallbackModel test) {
+        public async IActionResult ReceivePost([FromForm] CallbackModel test) {
             var res = JsonConvert.SerializeObject(test);
-            Console.WriteLine(res);
+            var bodyContent = new StringContent(res, Encoding.UTF8, "application/json");
+            Console.WriteLine(bodyContent);
 
+            var formData = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("merchantCode", "DS19890"),
+                new KeyValuePair<string, string>("amount", ""),
+                new KeyValuePair<string, string>("merchantOrderId", ""),
+                new KeyValuePair<string, string>("paymentCode", ""),
+                new KeyValuePair<string, string>("resultCode", ""),
+                new KeyValuePair<string, string>("merchantUserId", ""),
+                new KeyValuePair<string, string>("reference", ""),
+                new KeyValuePair<string, string>("signature", "")
+
+            }
+
+            FormUrlEncodedContent content = new FormUrlEncodedContent(formData);
+
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    HttpResponseMessage response = await client.PostAsync(
+                        "https://fbe4-103-171-163-207.ngrok-free.app/Transaction/ReceivePost",
+                        content
+                    );
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string result = await response.Content.ReadAsStringAsync();
+                        return Ok(result);
+                    }
+                    else
+                    {
+                        return StatusCode((int)res.StatusCode, res.ReasonPhrase);
+                    }
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine("Request Exception: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("General exception: " + ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, $"General error: {ex.Message}");
+            }
             return Json(test);
-            // try
-            // {
-            //     using (HttpClient client = new HttpClient())
-            //     {
-            //         HttpResponseMessage res = await client.PostAsync(
-            //             "https://sandbox.duitku.com/webapi/api/merchant/v2/inquiry",
-            //             test
-            //         );
-
-            //         if (res)
-            //         {
-
-            //         }
-            //         else
-            //         {
-            //             return StatusCode((int)res.StatusCode, res.ReasonPhrase);
-            //         }
-            //     }
-            // }
-            // catch (HttpRequestException ex)
-            // {
-            //     Console.WriteLine("Request Exception: " + ex.Message);
-            // }
-            // catch (Exception ex)
-            // {
-            //     Console.WriteLine("General exception: " + ex.Message);
-            //     return StatusCode(StatusCodes.Status500InternalServerError, $"General error: {ex.Message}");
-            // }
         }
     
         [HttpGet("ReceiveGet")]
