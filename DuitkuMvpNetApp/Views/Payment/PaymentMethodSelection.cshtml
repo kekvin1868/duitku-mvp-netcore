@@ -1,0 +1,46 @@
+@model DuitkuMvpNetApp.ControllerModels.PaymentTransactionCombinedModel
+@using Newtonsoft.Json
+
+@{
+    ViewData["BodyTitle"] = "Select Payment Method";
+    ViewData["MetaTitle"] = "SumiatiShop - Payment Method";
+
+    var transactionJson = JsonConvert.SerializeObject(Model.TransactionCombinedModel);
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["MetaTitle"]</title>
+</head>
+<body>
+    <h2>@ViewData["BodyTitle"]</h2>
+
+    <div class="container">
+        <h3>Available Payment Methods</h3>
+        <div class="row"> 
+            @foreach (var paymentObject in Model.PaymentCombinedModel.PaymentResponse.PaymentFee)
+            {
+                <form id="selectPaymentMethod" method="post" action="@Url.Action("Payment", "Transaction")">
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <img src="@paymentObject.PaymentImage" class="card-img-top img-responsive" alt="@paymentObject.PaymentName">
+                            <div class="card-body">
+                                <h5 class="card-title">@paymentObject.PaymentName</h5>
+                                <p class="card-text">Fee: @paymentObject.TotalFee</p>
+
+                                <input type="hidden" name="transactionData" value='@Html.Raw(transactionJson)' />
+                                <input type="hidden" name="paymentFee" value="@paymentObject.TotalFee" />
+                                <input type="hidden" name="paymentMethod" value="@paymentObject.PaymentMethod" /> 
+                                <button type="submit" class="btn btn-primary">Select</button>
+                            </div>
+                            <br><br><br>
+                        </div>
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+</body>

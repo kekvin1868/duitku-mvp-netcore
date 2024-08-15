@@ -1,0 +1,111 @@
+@model DuitkuMvpNetApp.ViewModels.TransactionEditModel
+
+@{
+    ViewData["MetaTitle"] = "SumiatiShop - Edit Transaction";
+    ViewData["BodyTitle"] = "Edit Transaction";
+
+    var transaction = Model?.TransactionDetails;
+    var items = Model.ItemDetails;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["MetaTitle"]</title>
+    <style>
+        .readonly-text {
+            font-size: 1rem;
+            color: #909090;
+        }
+
+        .editable-field {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>@ViewData["BodyTitle"]</h1>
+
+    <form id="editForm" method="post" action="@Url.Action("Update", "Transaction")">
+        <input type="hidden" name="TransactionDetails.MsTransactionId" value="@transaction.MsTransactionId" />
+        
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-md-2">
+                    <label for="DisplayTransactionId">Transaction ID:</label>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" id="DisplayTransactionId" name="DisplayTransactionId" class="form-control readonly-text" value="@transaction.MsTransactionId" readonly />
+                </div>
+            </div>
+            <br>
+            <div class="row mb-3">
+                <div class="col-md-2">
+                    <label for="DisplayTransactionAmount">Total Amount:</label>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" id="DisplayTransactionAmount" name="DisplayTransactionAmount" class="form-control readonly-text" value="@transaction.MsTransactionTotalAmount" readonly />
+                </div>
+            </div>
+            <br>
+            <div class="row mb-3">
+                <div class="col-md-2">
+                    <label for="DisplayTransactionStatus">Status:</label>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" id="DisplayTransactionStatus" name="DisplayTransactionStatus" class="form-control readonly-text" value="@transaction.MsTransactionStatus" readonly />
+                </div>
+            </div>
+            <br>
+            <div class="row mb-3">
+                <div class="col-md-2">
+                    <label for="TransactionDescription">Description:</label>
+                </div>
+                <div class="col-md-10">
+                    <textarea id="TransactionDescription" name="TransactionDetails.MsTransactionDescription" class="form-control" required>@transaction.MsTransactionDescription</textarea>
+                </div>
+            </div>
+            <br>
+            <div class="row mb-3">
+                <div class="col-md-2">
+                    <label for="DisplayTransactionTimestamp">Timestamp:</label>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" id="DisplayTransactionTimestamp" name="DisplayTransactionTimestamp" class="form-control readonly-text" value="@transaction.MsTransactionTimestamp" readonly />
+                </div>
+            </div>
+        </div>
+
+        <h3>Item Details</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Item ID</th>
+                    <th>Item Name</th>
+                    <th>Item Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ItemDetails)
+                {
+                    <tr>
+                        <td><input type="text" name="DisplayMsItemsId" class="form-control readonly-text" value="@item.MsItemsId" readonly /></td>
+                        <td><input type="text" name="DisplayMsItemsNama" class="form-control readonly-text" value="@item.MsItemsNama" readonly /></td>
+                        <td><input type="text" name="DisplayMsItemsHarga" class="form-control readonly-text" value="@item.MsItemsHarga" readonly /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+
+    <div style="margin-top: 20px;">
+        <a href="@Url.Action("All", "Transaction")">
+            <button class="btn btn-primary">Back to List</button>
+        </a>
+    </div>
+</body>
+</html>

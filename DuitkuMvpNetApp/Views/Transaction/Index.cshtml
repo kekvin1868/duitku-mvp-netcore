@@ -1,0 +1,76 @@
+@{
+    ViewData["MetaTitle"] = "SumiatiShop - Transaction";
+    ViewData["BodyTitle"] = "Transaction Menu";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["MetaTitle"]</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/transactions/addItems.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div style="margin-top: 20px;">
+            <a href="@Url.Action("All", "Transaction")">
+                <button class="btn btn-secondary">
+                    View All Transactions
+                </button>
+            </a>
+        </div>
+        <h1>@ViewData["BodyTitle"]</h1>
+
+        <form id="itemForm" method="post" action="@Url.Action("SelectPaymentMethod", "Transaction")">
+            <h3>Add Transaction Description</h3>
+            <div class="form-group">
+                <label class="form-label">Description:
+                    <input type="text" id="Description" name="Description" class="form-control" />
+                    <span id="descriptionError" class="text-danger"></span>
+                 </label>
+            </div>
+
+            <h3>Add Item Details (Multiple)</h3>
+            <div class="form-group">
+                <label class="form-label">Nama: 
+                    <input type="text" id="Nama" name="Nama" class="form-control" />
+                    <span id="namaError" class="text-danger"></span>
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Harga:
+                    <input type="text" id="Harga" name="Harga" class="form-control" min="10000" />
+                    <span id="hargaError" class="text-danger"></span>
+                </label>
+            </div>
+
+            <button type="button" id="addButton" class="btn btn-primary">Add</button>
+
+            <table id="addItemsTable" class="table mt-3">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Nama</th>
+                        <th>Harga</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        
+            <input type="hidden" id="itemsJson" name="itemsJson" />
+            <input type="hidden" id="transactionId" name="transactionId" value="@ViewBag.TransactionId" />
+
+            <button id="proceedButton" class="btn btn-secondary mt-3" type="submit">Proceed to Payment</button>    
+        </form>
+    </div>
+</body>
+</html>

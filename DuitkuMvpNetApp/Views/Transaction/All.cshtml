@@ -1,0 +1,60 @@
+@model DuitkuMvpNetApp.ViewModels.TransactionViewModel
+
+@{
+    ViewData["BodyTitle"] = "All Transactions";
+    ViewData["MetaTitle"] = "SumiatiShop - All Transactions";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["MetaTitle"]</title>
+</head>
+<body>
+    <div style="margin-top: 20px;">
+        <a href="/Transaction">
+            <button class="btn btn-primary">Make Another Purchase</button>
+        </a>
+    </div>
+    <h3>@ViewData["BodyTitle"]</h3>
+    <table id="transactionsTable" class="table mt-3">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Total Amount</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Transactions != null && Model.Transactions.Any())
+            {
+                @foreach (var transaction in Model.Transactions)
+                {
+                    <tr>
+                        <td>@transaction.MsTransactionId</td>
+                        <td>@transaction.MsTransactionTotalAmount</td>
+                        <td>@transaction.MsTransactionTimestamp</td>
+                        <td>@transaction.MsTransactionStatus</td>
+                        <td>
+                            <a href="@Url.Action("Edit", "Transaction",
+                                new {
+                                    merchantOrderId = transaction.MsTransactionId
+                                }
+                            )" class="btn btn-primary">Edit</a>
+                            
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4">No transactions found.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>

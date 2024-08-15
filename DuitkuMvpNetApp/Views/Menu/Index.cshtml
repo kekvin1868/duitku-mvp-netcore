@@ -1,0 +1,56 @@
+@model DuitkuMvpNetApp.ViewModels.MenuViewModel;
+
+@{
+    ViewData["BodyTitle"] = "Main Menu - ";
+    ViewData["MetaTitle"] = "SumiatiShop - Menu";
+
+    string baseUrl = "http://localhost:5134";
+    string makeAnotherPurchaseUrl = $"{baseUrl}/Transaction";
+    string viewAllTransactionsUrl = $"{baseUrl}/Transaction/All";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["MetaTitle"]</title>
+</head>
+<body>
+    <div style="margin-top: 20px;">
+        <button onclick="location.href='@makeAnotherPurchaseUrl';" class="btn btn-primary">Make Another Purchase</button>
+        <button onclick="location.href='@viewAllTransactionsUrl';" class="btn btn-secondary">View All Transactions</button>
+    </div>
+
+    <h2>@ViewData["BodyTitle"] Purchase Successful</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Item ID</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Items != null && Model.Items.Any())
+            {
+                @foreach (var item in Model.Items)
+                {
+                    <tr>
+                        <td>@item.MsItemsId</td>
+                        <td>@item.MsItemsNama</td>
+                        <td>@item.MsItemsHarga</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3">No items found for this transaction.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+</body>
