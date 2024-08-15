@@ -16,6 +16,7 @@ namespace DuitkuMvpNetApp.Controllers
             _context = context;
         }
 
+        [HttpGet("/Menu")]
         public async Task<IActionResult> Index()
         {
             string merchantOrderId = Request.Query["merchantOrderId"];
