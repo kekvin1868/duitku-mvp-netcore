@@ -187,7 +187,7 @@ namespace DuitkuMvpNetApp.Controllers
             var emailPayload = "kevin.hartono1868@gmail.com";
             var paymentMethodPayload = model.PaymentMethod;
             var returnUrlPayload = "http://localhost:5134/Menu";
-            var callbackUrlPayload = "https://b5d4-182-253-47-123.ngrok-free.app/Transaction/ReceivePost";
+            var callbackUrlPayload = "https://fbe4-103-171-163-207.ngrok-free.app/Transaction/ReceivePost";
 
             var signatureText = $"{merchantCodePayload}{merchantOrderIdPayload}{paymentAmountPayload}{apiKeyPayload}";
             var signaturePayload = ComputeMd5Hash(signatureText);

@@ -30,7 +30,7 @@ $(document).ready(function() {
         
         // Create new row
         var newRow = '<tr><td>' + currentNo + '</td><td>' + nama + '</td><td>' + harga + '</td></tr>';
-        console.log("New row added: ", newRow);
+        
         // Append and update data
         $('#addItemsTable tbody').append(newRow);
 
@@ -65,5 +65,6 @@ $(document).ready(function() {
         }
         
         $('#itemsJson').val(JSON.stringify(data));
+        $(this).unbind('submit').submit();
     });
 });
