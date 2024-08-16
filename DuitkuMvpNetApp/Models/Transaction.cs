@@ -23,12 +23,16 @@ namespace DuitkuMvpNetApp.Models
         [Required]
         public TransactionStatus MsTransactionStatus { get; set; } = TransactionStatus.Pending;
 
+        [MaxLength(100)]
+        public string MsTransactionReference { get; set; } = string.Empty;
+
         public virtual ICollection<Item> Items { get; set; } = new HashSet<Item>();
     }
 
     public enum TransactionStatus
     {
-        Pending,
-        Success
+        Failed = 0,
+        Success = 1,
+        Pending = 2
     }
 }
