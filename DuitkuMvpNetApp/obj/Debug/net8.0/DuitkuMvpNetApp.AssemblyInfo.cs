@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DuitkuMvpNetApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+92cd8c405d2c1e982f2f570d765f84319121d4ab")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4913c7df6fb9c8356ba0c21c6a4a7fdccac67500")]
 [assembly: System.Reflection.AssemblyProductAttribute("DuitkuMvpNetApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DuitkuMvpNetApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

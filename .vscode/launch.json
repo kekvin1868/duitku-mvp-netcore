@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "name": "C#: DuitkuMvpNetApp [Default Configuration]",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/DuitkuMvpNetApp/DuitkuMvpNetApp.csproj"
+        }
+    ]
+}
